@@ -1,32 +1,11 @@
-const express = require('express');
-const app = express(),
-      bodyParser = require("body-parser");
-      port = 3080;
+const express = require('express')
+const app = express()
+const port = 3080
 
-// place holder for the data
-const users = [];
-
-app.use(bodyParser.json());
-
-app.get('/api/users', (req, res) => {
-  console.log('api/users called!!!!')
-  // res.json(users);
-  return {
-    users: "Will go here"
-  }
-});
-
-app.post('/api/user', (req, res) => {
-  const user = req.body.user;
-  console.log('Adding user::::::::', user);
-  users.push(user);
-  res.json("user addedd");
-});
-
-app.get('/', (req,res) => {
-    res.send('App Works !!!!');
-});
+app.get('/', (req, res) => {
+  res.json({ info: "Node js server running"})
+})
 
 app.listen(port, () => {
-    console.log(`Server listening on the port::${port}`);
-});
+  console.log(`Example app listening on port ${port}`)
+})
